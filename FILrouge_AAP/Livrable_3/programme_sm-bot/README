@@ -1,0 +1,17 @@
+Ce document contient :
+
+gestionGraphUltimate.c
+gestionGraphUltimate.h
+gestionTemps.c
+gestionTemps.h
+main.c
+morpion_to_S.c : Gestion du bot
+morpion_to_S.h
+posGraphUltimate.c : Gestion de la structure
+posGraphUltimate.h
+README
+sm-bot.exe
+
+Pour compiler le programme : <make>
+
+Pour lancer : ./sm-bot.exe [position FEN] Temps_Restant
