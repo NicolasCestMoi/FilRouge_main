@@ -17,17 +17,33 @@ int DEBUG = 0;
 int profondeur = 1;
 
 int main(int argc, char* argv[]){
+    DEBUG = 0;
     posGraphUltimate position;
+
+    /******Gestion des variables d'environnements****/
+
+    char* debugEnv = getenv("DEBUG");
+    if(debugEnv != NULL && atoi(debugEnv) != 0){
+        DEBUG = 1;
+    }
+    else {
+        DEBUG = 0;
+    }
+
+    char* smpathEnv = getenv("SMPATH");
+    if(smpathEnv != NULL && atoi(debugEnv) != 0){
+        printf("Voici le chemin : <../programme_sm-refresh/>");
+    }
+
+    /***Gestion des paramètres d'entrées****/
     if(argc ==1){
         position = fenToPosGraphUltimate("999999999");         //Exemple de buffer : "6xoxOOOX2xo1ox1oXx2xo4oox4ox"
         position.joueur = 'o';
-        DEBUG = 0;
-        profondeur = 1;
+        profondeur = 2;
         printf("Si vous voulez lancer une position précise OU lancer un mode, format : \n");
-        printf("[programme] [position FEN (position   joueur)] [profondeur] [mode DEBUG? DEBUG / noDEBUG] [mode SMPATH? SMPATH/ noSMPATH] \n");
+        printf("[programme] [position FEN (position   joueur)] [profondeur] \n");
     }
     else if(argc >= 2){
-        DEBUG = 0;
         char buffer[100];
         int count = 0;
         while(argv[1][count] != ' '){
@@ -37,14 +53,10 @@ int main(int argc, char* argv[]){
         buffer[++count] = '\0';
         position = fenToPosGraphUltimate(buffer);         //Exemple de buffer : "6xoxOOOX2xo1ox1oXx2xo4oox4ox"
         position.joueur = argv[1][count];
-        if(argc>=3){
+        if(argc==3){
             profondeur = atoi(argv[2]);
-            if(argc >= 4){                                          //6xox2xo4xO7xoX2xo1ox1oXx3o4oox4ox
-                if(strcmp(argv[3],"DEBUG") == 0) DEBUG = 1;
-                else if(strcmp(argv[3],"DEBUG") != 0) DEBUG =0;
-                if(argc >= 5 && strcmp(argv[4],"SMPATH") ==0){
-                    printf("\nRépertoire de création du .dot : ../super_morpion/ \n\n");
-                }
+            if(profondeur > 4){
+                fprintf(stderr,"Attention, la profondeur est peut-être trop importante : risque de CRASH");
             }
         }
     }
@@ -54,11 +66,5 @@ int main(int argc, char* argv[]){
     }
     
     GameUltimate(position);
-
-    //int coup_a_jouer[2];
-    //position.joueur = 'x';
-    //evaluation(position,7, 2,1, coup_a_jouer);
-
-    //printf("%d %d",coup_a_jouer[0],coup_a_jouer[1]);
 
 }

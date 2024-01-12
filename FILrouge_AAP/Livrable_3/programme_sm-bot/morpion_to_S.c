@@ -42,7 +42,7 @@ void LaunchBot(posGraphUltimate position, int coup_precedent, int coup_a_jouer[]
     else {
         maximum = -INFINI;
         char joueur_temp = position.joueur;
-        evaluation(position, grille, 4, 1, coup_a_jouer,1,temps);
+        evaluation(position, grille, 4, 1, coup_a_jouer,1,temps);       //Evaluation fixé à 4
         position.joueur = joueur_temp;
     }
     coup_a_jouer[0] = grille;
