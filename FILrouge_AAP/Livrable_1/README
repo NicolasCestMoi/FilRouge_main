@@ -1,4 +1,3 @@
-
 /************** Livrable 1 ***************/
 
 
@@ -18,4 +17,4 @@ main.c: permet l’exécution du programme.
 
 Pour compiler le programme, entrez <make>.
 
-Pour générer le .dot d'une position, entrez ./tttree.exe [FEN (position joueurautrait)]
+Pour générer le .dot d'une position, entrez ./tttree.exe [FEN (position ET joueurautrait)]

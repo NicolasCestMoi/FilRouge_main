@@ -1,3 +1,5 @@
+/********Livrable 2************/
+
 Ce dossier contient les fichiers suivants:
 
 gestionGraphUltimate.c, gestionGraphUltimate.h :  permettent l’affichage graphique de l’arbre de possibilité du morpion simple (fichier dot).
@@ -10,4 +12,10 @@ main.c: permet le lancement de la partie de super-morpion.
 
 Pour compiler le programme, entrez <make>.
 
-Pour lancer une partie, ./sm-refresh.exe [position FEN (position   joueur)] [profondeur] [mode DEBUG? DEBUG / noDEBUG] [mode SMPATH? SMPATH/ noSMPATH]
+Pour lancer une partie, ./sm-refresh.exe [position FEN (position   joueur)] [profondeur] 
+
+Pour activer les variables d'enrivonnement SMPATH et DEBUG, faites :
+
+DEBUG=1 ./sm-refresh.exe ...
+
+SMPATH=1 ./sm-refresh.exe ...
